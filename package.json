@@ -4,6 +4,7 @@
   "description": "Optimizes a Big Cartel shop's product feed for use with Facebook Business catalogs",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -25,6 +26,7 @@
   },
   "homepage": "https://github.com/shakeelmohamed/bigcartel-feed-cleaner#readme",
   "dependencies": {
+    "express": "^4.16.3",
     "request": "^2.87.0",
     "string": "^3.3.3",
     "xml2js": "^0.4.19"
