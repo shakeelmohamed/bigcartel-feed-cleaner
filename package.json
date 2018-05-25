@@ -1,0 +1,35 @@
+{
+  "name": "bigcartel-feed-cleaner",
+  "version": "1.0.0",
+  "description": "Optimizes a Big Cartel shop's product feed for use with Facebook Business catalogs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shakeelmohamed/bigcartel-feed-cleaner.git"
+  },
+  "keywords": [
+    "big",
+    "cartel",
+    "facebook",
+    "business",
+    "product",
+    "catalog"
+  ],
+  "author": "Shakeel Mohamed <contact@shakeel.xyz>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shakeelmohamed/bigcartel-feed-cleaner/issues"
+  },
+  "homepage": "https://github.com/shakeelmohamed/bigcartel-feed-cleaner#readme",
+  "dependencies": {
+    "request": "^2.87.0",
+    "string": "^3.3.3",
+    "xml2js": "^0.4.19"
+  },
+  "devDependencies": {
+    "mocha": "^5.2.0"
+  }
+}
