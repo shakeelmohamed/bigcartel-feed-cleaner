@@ -7,7 +7,7 @@ const utils = require("./utils");
 // Product category example: 1604 - Apparel & Accessories > Clothing
 // Full List of product categories:
 // https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt
-const { BIG_CARTEL_FEED, GOOGLE_PRODUCT_CATEGORY, PORT } = process.env;
+const { BIG_CARTEL_FEED, PORT } = process.env;
 
 if (!BIG_CARTEL_FEED)
     throw new Error("Missing BIG_CARTEL_FEED env variable");
@@ -23,6 +23,8 @@ if (!BIG_CARTEL_FEED)
 //      - add g:google_product_category element w/ value from GOOGLE_PRODUCT_CATEGORY
 // 6 render cleaned up feed to products.xml
 
+// TODO: setup then CI, and CD on merge to master to Heroku
+
 const app = express();
 
 app.get("/products.xml", (req, res) => {
@@ -30,7 +32,6 @@ app.get("/products.xml", (req, res) => {
         if (err) {
             res.send(`Error: ${err.message}`);
         } else {
-            // TODO: res.body is undefined...
             utils.parseFeed(body);
         }
     });
