@@ -43,3 +43,13 @@ describe("utils.cleanDescription()", () => {
         assert.strictEqual(utils.cleanDescription(input).trim(), "");
     });
 });
+
+describe("", () => {
+    it("", () => {
+        let items = [{}, {}];
+        items.forEach((item) => {
+            item["g:google_product_category"] = process.env.GOOGLE_PRODUCT_CATEGORY;
+        });
+        console.log(items);
+    });
+});
