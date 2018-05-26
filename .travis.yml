@@ -1,5 +1,5 @@
 language: node_js
-notifcation:
+notifcations:
   email: false
 node_js:
 - '8'
