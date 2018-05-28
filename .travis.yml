@@ -1,0 +1,12 @@
+language: node_js
+notifcations:
+  email: false
+node_js:
+- '8'
+- '6'
+deploy:
+  provider: heroku
+  app:
+    master: bigcartel-feed-cleaner
+  api_key:
+    secure: mTvjhXdO603QztjsFUF01+UZbwsbKexFzjdGlvGBX5YpJn5erMdgg/HeXzbwGftFUbZHlFTX5k5TC8H5Wu+v1Ul3mRFhQElEvOtTfawuU3cVJH3Zh0rxaQ9ICqIGKMfjhsFILORoKlL92Wl9qzMYfm8E71Z/HgUuKU2HMQ0zokxcGHk6tmqY3J+OzMvR0n2fs7gNhYZ2yJ0vCkr6otDdgBXXUBOAxNXDgedvBuBKt1cW+kCNVdmrBKGi4D5xloHinlz56r352bh+3/ZI+QQSox2lKgUGiXgR6fxtLbm09xJ6m+57x+vTsSOj+LOGX1ox1bXhSX/GtL9cmhDGIGPq5Tb6k5kDarKg0edHp5ET0m8f1/W+elzMF1hAaUMP4ARMrtuV4bAz41TeayiVPOc6wej1ns35nA0X2JC3lrjmt1pv4FhIEMr3Ec3dhiCA13r/kAmnewLbD/WR3IcNN0ys5H0nyPVIZjhUIHgjpFkDtMIvJtBdnOV1VCXNR2I7HsLsAG2xH5sDtyPZxaN2YfHqIXuVR7RAm4WSq7yPlvQSCebnBj6ptzHfXf+xm2RMXfhRK6Kdt2AFkh9T9xXiWBju+2EGuqKU55u7rVs/gOV2cirxhxliyX5aeUknFiiXsjmfln7rgYk2j1zzCHbB1xs4YRcXfftRX9JRx39tKMuMYQg=
