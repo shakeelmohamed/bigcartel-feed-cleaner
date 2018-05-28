@@ -44,12 +44,11 @@ describe("utils.cleanDescription()", () => {
     });
 });
 
-describe("", () => {
-    it("", () => {
+describe("utils.addGPC()", () => {
+    it("add GPC to array of empty objects", () => {
         let items = [{}, {}];
         items.forEach((item) => {
             item["g:google_product_category"] = process.env.GOOGLE_PRODUCT_CATEGORY;
         });
-        console.log(items);
     });
 });

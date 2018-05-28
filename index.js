@@ -21,7 +21,7 @@ if (!BIG_CARTEL_FEED)
 //          root.rss.channel.item.g:description
 //      - [done] Strip all HTML tags with string module S(str).stripTags().s
 //      - [done] add g:google_product_category element w/ value from GOOGLE_PRODUCT_CATEGORY
-//      - Text from HTML headings should remain
+//      - [done] Text from HTML headings should remain
 //      - remove all duplicate/triplicate? &#xD; chars, I think <br>s have become this somehow
 // 4 [done] render cleaned up feed to products.xml
 
@@ -35,7 +35,6 @@ app.get("/products.xml", (req, res) => {
             res.send(`Error: ${err.message}`);
         } else {
             utils.parseFeed(body, (err, feedObject) => {
-                // TODO: ensure rss/XML header is sent back instead of json
                 if (err) {
                     res.send(`Error: ${err.message}`);
                 } else {

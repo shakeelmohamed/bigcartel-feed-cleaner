@@ -6,7 +6,6 @@ let ME = module.exports;
 ME.parseFeed = (feed, done) => {
     const opts = {
         valueProcessors: [(val, name) => {
-            console.log("valueProcessors: val, name ", name);
             switch(name) {
                 case "g:description":
                     return ME.cleanDescription(val);
@@ -24,15 +23,16 @@ ME.cleanDescription = (val) => {
     ret = ret.replace(/<table>(.|\s)*?<\/table>/g, "");
     ret = ret.replace(/<br\s*[?]>/g, "");
 
-    // TODO: see comments for step 3, index.js
-
     ret = S(ret).stripTags().s;
     return ret;
 };
 
 ME.addGPC = (feedObject) => {
-    console.log(feedObject.rss.channel);
-    // TODO: validate for undefined at each level
+    if (!feedObject || !feedObject.rss || !feedObject.rss.channel || 
+        !feedObject.rss.channel.length < 1 || !feedObject.rss.channel[0].item) {
+        return feedObject;
+    }
+
     let items = feedObject.rss.channel[0].item;
     items.forEach((item) => {
         item["g:google_product_category"] = process.env.GOOGLE_PRODUCT_CATEGORY;
