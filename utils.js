@@ -29,15 +29,14 @@ ME.cleanDescription = (val) => {
 };
 
 ME.addGPC = (feedObject) => {
-    if (!feedObject || !feedObject.rss || !feedObject.rss.channel || 
-        !feedObject.rss.channel.length < 1 || !feedObject.rss.channel[0].item) {
+    if (!feedObject || !feedObject.rss || !feedObject.rss.channel) {
         return feedObject;
     }
 
     let items = feedObject.rss.channel[0].item;
-    items.forEach((item) => {
-        item["g:google_product_category"] = process.env.GOOGLE_PRODUCT_CATEGORY;
-    });
+    for (let i = 0; i < items.length; i++) {
+        items[i]["g:google_product_category"] = process.env.GOOGLE_PRODUCT_CATEGORY;
+    }
     return feedObject;
 };
 

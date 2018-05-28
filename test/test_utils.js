@@ -46,9 +46,18 @@ describe("utils.cleanDescription()", () => {
 
 describe("utils.addGPC()", () => {
     it("add GPC to array of empty objects", () => {
-        let items = [{}, {}];
-        items.forEach((item) => {
-            item["g:google_product_category"] = process.env.GOOGLE_PRODUCT_CATEGORY;
+        process.env.GOOGLE_PRODUCT_CATEGORY = "1234";
+        let feed = {
+            rss: {
+                channel: [{
+                    item: [{foo: "bar"}, {some: "value"}]
+                }]
+            }
+        };
+        const result = utils.addGPC(feed);
+        assert.strictEqual(result.rss.channel[0].item.length, 2);
+        result.rss.channel[0].item.forEach((item) => {
+            assert.strictEqual(item["g:google_product_category"], "1234");
         });
     });
 });
