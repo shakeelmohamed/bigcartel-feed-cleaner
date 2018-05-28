@@ -18,10 +18,11 @@ ME.parseFeed = (feed, done) => {
 };
 
 ME.cleanDescription = (val) => {
-    let ret = S(val).unescapeHTML().s;
+    let ret = val.replace(/\r/g, "");
+    ret = S(val).unescapeHTML().s;
 
     ret = ret.replace(/<table>(.|\s)*?<\/table>/g, "");
-    ret = ret.replace(/<br\s*[?]>/g, "");
+    ret = ret.replace(/\r/g, "");
 
     ret = S(ret).stripTags().s;
     return ret;
