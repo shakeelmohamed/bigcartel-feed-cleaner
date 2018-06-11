@@ -2,9 +2,17 @@ const assert = require("assert");
 const utils = require("../utils");
 
 describe("utils.cleanDescription()", () => {
-    it("h2", () => {
+    it("h2 - size chart", () => {
         const input = "&lt;h2&gt;Size Chart&lt;/h2&gt;";
-        assert.strictEqual(utils.cleanDescription(input), "Size Chart");
+        assert.strictEqual(utils.cleanDescription(input), "");
+    });
+    it("h1", () => {
+        const input = "&lt;h1&gt;Special content&lt;/h1&gt;";
+        assert.strictEqual(utils.cleanDescription(input), "Special content");
+    });
+    it("many newlines get trimmed to 2", () => {
+        const input = "\n\n\n\n\n\n\n\n\n\n\n\n\n";
+        assert.strictEqual(utils.cleanDescription(input), "\n\n");
     });
     it("table", () => {
         const input = `

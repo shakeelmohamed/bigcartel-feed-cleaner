@@ -21,8 +21,17 @@ ME.cleanDescription = (val) => {
     let ret = val.replace(/\r/g, "");
     ret = S(val).unescapeHTML().s;
 
-    ret = ret.replace(/<table>(.|\s)*?<\/table>/g, "");
+    // Remove LF
     ret = ret.replace(/\r/g, "");
+
+    // Remove the size chart heading above the <table>
+    ret = ret.replace(/<h\d>\s*Size Chart\s*<\/\s*h\d>/gi, "");
+
+    // Remove all <table> tags entirely
+    ret = ret.replace(/<table>(.|\s)*?<\/table>/g, "");
+
+    // TODO: trim 2+ newlines to 2
+    ret = ret.replace(/\n{2,}/g, "\n\n");
 
     ret = S(ret).stripTags().s;
     return ret;
