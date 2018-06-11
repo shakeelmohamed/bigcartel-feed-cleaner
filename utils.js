@@ -30,7 +30,7 @@ ME.cleanDescription = (val) => {
     // Remove all <table> tags entirely
     ret = ret.replace(/<table>(.|\s)*?<\/table>/g, "");
 
-    // TODO: trim 2+ newlines to 2
+    // Trim 2+ newlines to 2
     ret = ret.replace(/\n{2,}/g, "\n\n");
 
     ret = S(ret).stripTags().s;
