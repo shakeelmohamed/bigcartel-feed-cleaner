@@ -37,6 +37,7 @@ ME.cleanDescription = (val) => {
     return ret;
 };
 
+// TODO: rename to addProductMetadata
 ME.addGPC = (feedObject) => {
     if (!feedObject || !feedObject.rss || !feedObject.rss.channel) {
         return feedObject;
@@ -45,6 +46,22 @@ ME.addGPC = (feedObject) => {
     let items = feedObject.rss.channel[0].item;
     for (let i = 0; i < items.length; i++) {
         items[i]["g:google_product_category"] = process.env.GOOGLE_PRODUCT_CATEGORY;
+        /**
+         * TODO: also need to set the following:
+         * - g:age_group = "adult"
+         * - g:gender = "unisex"
+         * - g:brand = "ntrsct" // TODO: add this same value to website organization rich markup
+         * - multiple sibling g:shipping tags (without a parent) for all "groups":
+         *     g:country = US|CA|* // get code from https://en.wikipedia.org/wiki/ISO_3166-2
+         *     g:price = free|"3 USD"|"5 USD"
+         * - g:item_group_id = g:id
+         * - g:color = "black"|"black/white/green"
+         * - g:size = S|M|L|XL // TODO: duplicate the entire entry for each size variant... ugh.
+         *
+         * Optional:
+         * - g:size_type = "regular"
+         * - g:size_system = "US"
+         */
     }
     return feedObject;
 };
