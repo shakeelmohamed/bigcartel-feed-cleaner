@@ -57,6 +57,7 @@ ME.addGPC = (feedObject) => {
          * - g:item_group_id = g:id
          * - g:color = "black"|"black/white/green"
          * - g:size = S|M|L|XL // TODO: duplicate the entire entry for each size variant... ugh.
+         * product group may be needed: https://developers.facebook.com/docs/marketing-api/reference/product-group
          *
          * Optional:
          * - g:size_type = "regular"
