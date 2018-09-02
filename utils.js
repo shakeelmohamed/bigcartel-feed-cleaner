@@ -46,9 +46,9 @@ ME.addGPC = (feedObject) => {
     let items = feedObject.rss.channel[0].item;
     for (let i = 0; i < items.length; i++) {
         items[i]["g:google_product_category"] = process.env.GOOGLE_PRODUCT_CATEGORY;
-        imems[i]["g:age_group"] = "adult";
-        imems[i]["g:gender"] = "unisex";
-        imems[i]["g:brand"] = "ntrsct"; // TODO: add this same value to website organization rich markup
+        items[i]["g:age_group"] = "adult";
+        items[i]["g:gender"] = "unisex";
+        items[i]["g:brand"] = "ntrsct"; // TODO: add this same value to website organization rich markup
         /**
          * TODO: also need to set the following:
          * - g:age_group = "adult"
