@@ -45,6 +45,9 @@ ME.addGPC = (feedObject) => {
 
     let items = feedObject.rss.channel[0].item;
     for (let i = 0; i < items.length; i++) {
+        // TODO: remove
+        items[i]["g:id"] = items[i]["g:id"] + "_temp";
+
         items[i]["g:google_product_category"] = process.env.GOOGLE_PRODUCT_CATEGORY;
         items[i]["g:age_group"] = "adult";
         items[i]["g:gender"] = "unisex";
