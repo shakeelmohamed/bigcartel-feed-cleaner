@@ -49,23 +49,32 @@ ME.addGPC = (feedObject) => {
         items[i]["g:age_group"] = "adult";
         items[i]["g:gender"] = "unisex";
         items[i]["g:brand"] = "ntrsct"; // TODO: add this same value to website organization rich markup
+        items[i]["g:size_type"] = "regular";
+        items[i]["g:size_system"] = "US";
+        items[i]["g:item_group_id"] = items[i]["g:id"]; // TODO: investigate https://developers.facebook.com/docs/marketing-api/reference/product-group
+
         /**
          * TODO: also need to set the following:
+         * - multiple sibling g:shipping tags (without a parent) for all "groups":
+         *     g:country = US|CA|* // get code from https://en.wikipedia.org/wiki/ISO_3166-2
+         *     g:price = free|"5 USD"|"10 USD"
+         
+        <g:shipping>
+                <g:country>US</g:country>
+                <g:price>0.00 USD</g:price>
+              </g:shipping>
+
+         * - g:color = "black"|"black/white/green"
+         * - g:size = S|M|L|XL // TODO: duplicate the entire entry for each size variant... ugh.
+         *
+         * DONE:
          * - g:age_group = "adult"
          * - g:gender = "unisex"
          * - g:brand = "ntrsct" // TODO: add this same value to website organization rich markup
-         * - multiple sibling g:shipping tags (without a parent) for all "groups":
-         *     g:country = US|CA|* // get code from https://en.wikipedia.org/wiki/ISO_3166-2
-         *     g:price = free|"3 USD"|"5 USD"
-         * - g:item_group_id = g:id
-         * - g:color = "black"|"black/white/green"
-         * - g:size = S|M|L|XL // TODO: duplicate the entire entry for each size variant... ugh.
-         * product group may be needed: https://developers.facebook.com/docs/marketing-api/reference/product-group
-         *
-         * Optional:
          * - g:size_type = "regular"
          * - g:size_system = "US"
          */
+        items[i]["g:size"] = "M";
     }
     return feedObject;
 };
