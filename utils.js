@@ -79,10 +79,13 @@ ME.addGPC = (feedObject) => {
          */
         items[i]["g:size"] = "M";
 
-        items[i]["g:shipping"] = {
+        items[i]["g:shipping"] = [{
             "g:country": "US",
-            "g:price": "0.00 USD"
-        };
+            "g:price": "free"
+        }, {
+            "g:country": "CA",
+            "g:price": "5.00 USD"
+        }];
     }
     return feedObject;
 };
