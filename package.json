@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/shakeelmohamed/bigcartel-feed-cleaner#readme",
   "dependencies": {
+    "deepcopy": "^1.0.0",
     "express": "^4.16.3",
     "request": "^2.87.0",
     "string": "^3.3.3",

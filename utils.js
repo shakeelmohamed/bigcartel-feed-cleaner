@@ -1,5 +1,6 @@
 const xml2js = require("xml2js");
 const S = require("string");
+const deepcopy = require("deepcopy");
 
 let ME = module.exports;
 
@@ -43,6 +44,7 @@ ME.addGPC = (feedObject) => {
         return feedObject;
     }
 
+    let itemsPerSize = [];
     let items = feedObject.rss.channel[0].item;
     for (let i = 0; i < items.length; i++) {
         // TODO: remove
@@ -54,13 +56,13 @@ ME.addGPC = (feedObject) => {
         items[i]["g:brand"] = "ntrsct"; // TODO: add this same value to website organization rich markup
         items[i]["g:size_type"] = "regular";
         items[i]["g:size_system"] = "US";
-        items[i]["g:item_group_id"] = items[i]["g:id"]; // TODO: investigate https://developers.facebook.com/docs/marketing-api/reference/product-group
+        items[i]["g:item_group_id"] = items[i]["g:id"];
 
         /**
          * TODO: also need to set the following:
          * - multiple sibling g:shipping tags (without a parent) for all "groups":
          *     g:country = US|CA|* // get code from https://en.wikipedia.org/wiki/ISO_3166-2
-         *     g:price = free|"5 USD"|"10 USD"
+         *     g:price = "0.00 USD"|"5 USD"|"10 USD"
          
         <g:shipping>
                 <g:country>US</g:country>
@@ -77,21 +79,35 @@ ME.addGPC = (feedObject) => {
          * - g:size_type = "regular"
          * - g:size_system = "US"
          */
-        items[i]["g:size"] = "M";
+        // items[i]["g:size"] = "M";
 
         items[i]["g:shipping"] = [{
             "g:country": "US",
-            "g:price": "free"
+            "g:price": "0.00 USD"
         }, {
             "g:country": "CA",
             "g:price": "5.00 USD"
         }];
+
+        const itemWithSizes = getItemsBySize(items[i], ["S", "M", "L", "XL"]);
+        itemsPerSize.push(...itemWithSizes);
     }
+
+    feedObject.rss.channel[0].item = itemsPerSize;
     return feedObject;
 };
 
+function getItemsBySize(item, sizes) {
+    let items = [];
+    for (const size of sizes) {
+        let itemWithSize = deepcopy(item);
+        itemWithSize["g:size"] = size;
+        items.push(itemWithSize);
+    }
+    return items;
+}
+
 ME.objToFeed = (obj) => {
-    var builder = new xml2js.Builder({headless: true});
-    var xml = builder.buildObject(obj);
-    return xml;
+    const builder = new xml2js.Builder({headless: true});
+    return builder.buildObject(obj);
 };

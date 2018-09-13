@@ -63,7 +63,7 @@ describe("utils.addGPC()", () => {
             }
         };
         const result = utils.addGPC(feed);
-        assert.strictEqual(result.rss.channel[0].item.length, 2);
+        assert.strictEqual(result.rss.channel[0].item.length, 2 * 4); // 4 sizes: S, M, L, XL
         result.rss.channel[0].item.forEach((item) => {
             assert.strictEqual(item["g:google_product_category"], "1234");
         });
