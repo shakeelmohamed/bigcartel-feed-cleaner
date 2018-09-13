@@ -1,5 +1,6 @@
 const assert = require("assert");
 const utils = require("../utils");
+const data = require("./test-meta");
 
 describe("utils.cleanDescription()", () => {
     it("h2 - size chart", () => {
@@ -52,18 +53,18 @@ describe("utils.cleanDescription()", () => {
     });
 });
 
-describe("utils.addGPC()", () => {
+describe("utils.addProductMetadata()", () => {
     it("add GPC to array of empty objects", () => {
         process.env.GOOGLE_PRODUCT_CATEGORY = "1234";
         let feed = {
             rss: {
                 channel: [{
-                    item: [{foo: "bar"}, {some: "value"}]
+                    item: [{"g:id": "bar"}, {"g:id": "foo"}]
                 }]
             }
         };
-        const result = utils.addGPC(feed);
-        assert.strictEqual(result.rss.channel[0].item.length, 2 * 4); // 4 sizes: S, M, L, XL
+        const result = utils.addProductMetadata(feed, data);
+        assert.strictEqual(result.rss.channel[0].item.length, 6);
         result.rss.channel[0].item.forEach((item) => {
             assert.strictEqual(item["g:google_product_category"], "1234");
         });

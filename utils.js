@@ -38,8 +38,7 @@ ME.cleanDescription = (val) => {
     return ret;
 };
 
-// TODO: rename to addProductMetadata
-ME.addGPC = (feedObject) => {
+ME.addProductMetadata = (feedObject, metadata) => {
     if (!feedObject || !feedObject.rss || !feedObject.rss.channel) {
         return feedObject;
     }
@@ -47,30 +46,23 @@ ME.addGPC = (feedObject) => {
     let itemsPerSize = [];
     let items = feedObject.rss.channel[0].item;
     for (let i = 0; i < items.length; i++) {
+        const productID = items[i]["g:id"];
+        const productMeta = metadata[productID];
+
         // TODO: remove
         items[i]["g:id"] = items[i]["g:id"] + "_temp";
 
+        // TODO: move harcoded stuff to the JSON file
         items[i]["g:google_product_category"] = process.env.GOOGLE_PRODUCT_CATEGORY;
         items[i]["g:age_group"] = "adult";
         items[i]["g:gender"] = "unisex";
         items[i]["g:brand"] = "ntrsct"; // TODO: add this same value to website organization rich markup
         items[i]["g:size_type"] = "regular";
         items[i]["g:size_system"] = "US";
-        items[i]["g:item_group_id"] = items[i]["g:id"];
+        items[i]["g:item_group_id"] = productID;
+        items[i]["g:color"] = productMeta.color;
 
         /**
-         * TODO: also need to set the following:
-         * - multiple sibling g:shipping tags (without a parent) for all "groups":
-         *     g:country = US|CA|* // get code from https://en.wikipedia.org/wiki/ISO_3166-2
-         *     g:price = "0.00 USD"|"5 USD"|"10 USD"
-         
-        <g:shipping>
-                <g:country>US</g:country>
-                <g:price>0.00 USD</g:price>
-              </g:shipping>
-
-         * - g:color = "black"|"black/white/green"
-         * - g:size = S|M|L|XL // TODO: duplicate the entire entry for each size variant... ugh.
          *
          * DONE:
          * - g:age_group = "adult"
@@ -78,6 +70,16 @@ ME.addGPC = (feedObject) => {
          * - g:brand = "ntrsct" // TODO: add this same value to website organization rich markup
          * - g:size_type = "regular"
          * - g:size_system = "US"
+         * - g:color = "black"|"black/white/green"
+         * - g:size = S|M|L|XL // duplicate the entire entry for each size variant
+         * * - multiple sibling g:shipping tags (without a parent) for all "groups":
+         *     g:country = US|CA|* // get code from https://en.wikipedia.org/wiki/ISO_3166-2
+         *     g:price = "0.00 USD"|"5 USD"|"10 USD"
+         
+            <g:shipping>
+                <g:country>US</g:country>
+                <g:price>0.00 USD</g:price>
+            </g:shipping>
          */
         // items[i]["g:size"] = "M";
 
@@ -89,7 +91,7 @@ ME.addGPC = (feedObject) => {
             "g:price": "5.00 USD"
         }];
 
-        const itemWithSizes = getItemsBySize(items[i], ["S", "M", "L", "XL"]);
+        const itemWithSizes = getItemsBySize(items[i], productMeta.sizes);
         itemsPerSize.push(...itemWithSizes);
     }
 

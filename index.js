@@ -3,6 +3,9 @@ const request = require("request");
 
 const utils = require("./utils");
 
+// Data file that contains mapping of Product ID to metadata
+const metadata = require("./product-metadata");
+
 // Feed example: https://www.ntrsct.com/products.xml
 // Product category example: 1604 - Apparel & Accessories > Clothing
 // Full List of product categories:
@@ -38,7 +41,7 @@ app.get("/products.xml", (req, res) => {
                 if (err) {
                     res.send(`Error: ${err.message}`);
                 } else {
-                    const feedWithGPC = utils.addGPC(feedObject);
+                    const feedWithGPC = utils.addProductMetadata(feedObject, metadata);
                     const finalFeed = utils.objToFeed(feedWithGPC);
                     res.set("Content-Type", "application/xml; charset=utf-8");
                     res.send(finalFeed);
