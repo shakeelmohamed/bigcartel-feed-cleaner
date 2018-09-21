@@ -100,7 +100,7 @@ function getItemsBySize(item, sizes) {
     for (const size of sizes) {
         let itemWithSize = deepcopy(item);
         itemWithSize["g:size"] = size;
-        itemWithSize["g:id"] = productID + "_" + size;
+        itemWithSize["g:id"] = itemWithSize["g:id"] + "_" + size;
         items.push(itemWithSize);
     }
     return items;
