@@ -49,9 +49,6 @@ ME.addProductMetadata = (feedObject, metadata) => {
         const productID = items[i]["g:id"];
         const productMeta = metadata[productID];
 
-        // TODO: remove
-        items[i]["g:id"] = items[i]["g:id"] + "_temp";
-
         // TODO: move harcoded stuff to the JSON file
         items[i]["g:google_product_category"] = process.env.GOOGLE_PRODUCT_CATEGORY;
         items[i]["g:age_group"] = "adult";
@@ -103,6 +100,7 @@ function getItemsBySize(item, sizes) {
     for (const size of sizes) {
         let itemWithSize = deepcopy(item);
         itemWithSize["g:size"] = size;
+        itemWithSize["g:id"] = productID + "_" + size;
         items.push(itemWithSize);
     }
     return items;
