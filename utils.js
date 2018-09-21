@@ -56,7 +56,7 @@ ME.addProductMetadata = (feedObject, metadata) => {
         items[i]["g:google_product_category"] = process.env.GOOGLE_PRODUCT_CATEGORY;
         items[i]["g:age_group"] = "adult";
         items[i]["g:gender"] = "unisex";
-        items[i]["g:brand"] = "ntrsct"; // TODO: add this same value to website organization rich markup
+        items[i]["g:brand"] = "ntrsct";
         items[i]["g:size_type"] = "regular";
         items[i]["g:size_system"] = "US";
         items[i]["g:item_group_id"] = productID;
@@ -81,7 +81,6 @@ ME.addProductMetadata = (feedObject, metadata) => {
                 <g:price>0.00 USD</g:price>
             </g:shipping>
          */
-        // items[i]["g:size"] = "M";
 
         items[i]["g:shipping"] = [{
             "g:country": "US",
