@@ -99,8 +99,9 @@ function getItemsBySize(item, sizes) {
     let items = [];
     for (const size of sizes) {
         let itemWithSize = deepcopy(item);
+        itemWithSize["g:title"] = itemWithSize["g:title"] + " - " + size;
         itemWithSize["g:size"] = size;
-        itemWithSize["g:id"] = itemWithSize["g:id"] + "_" + size;
+        itemWithSize["g:id"] = itemWithSize["g:id"] + "-" + size;
         items.push(itemWithSize);
     }
     return items;
