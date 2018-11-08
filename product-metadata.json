@@ -43,5 +43,15 @@
         "g:title": "Intricate tee",
         "sizes": ["S", "M", "L", "XL"],
         "color": "black/coral"
+    },
+    "51159688": {
+        "g:title": "Maplaid Leaf crewneck",
+        "sizes": ["S", "M", "L", "XL"],
+        "color": "black/red/white/beige"
+    },
+    "51106741": {
+        "g:title": "Maplaid Leaf hoodie",
+        "sizes": ["S", "M", "L", "XL"],
+        "color": "black/red/white/beige"
     }
 }
