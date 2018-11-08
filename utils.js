@@ -48,8 +48,10 @@ ME.addProductMetadata = (feedObject, metadata) => {
     for (let i = 0; i < items.length; i++) {
         const productID = items[i]["g:id"];
         const productMeta = metadata[productID];
+
+        // Prevent crash for missing metadata products
         if (!productMeta) {
-            console.log(productID);
+            continue;
         }
 
         // TODO: move hardcoded stuff to the JSON file
