@@ -48,8 +48,11 @@ ME.addProductMetadata = (feedObject, metadata) => {
     for (let i = 0; i < items.length; i++) {
         const productID = items[i]["g:id"];
         const productMeta = metadata[productID];
+        if (!productMeta) {
+            console.log(productID);
+        }
 
-        // TODO: move harcoded stuff to the JSON file
+        // TODO: move hardcoded stuff to the JSON file
         items[i]["g:google_product_category"] = process.env.GOOGLE_PRODUCT_CATEGORY;
         items[i]["g:age_group"] = "adult";
         items[i]["g:gender"] = "unisex";
