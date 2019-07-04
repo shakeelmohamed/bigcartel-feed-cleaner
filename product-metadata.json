@@ -53,5 +53,10 @@
         "g:title": "Maplaid Leaf hoodie",
         "sizes": ["S", "M", "L", "XL"],
         "color": "black/red/white/beige"
+    },
+    "55758185": {
+        "g:title": "Vertical print joggers",
+        "sizes": ["S", "M", "L", "XL"],
+        "color": "black/white"
     }
 }
