@@ -58,5 +58,10 @@
         "g:title": "Vertical print joggers",
         "sizes": ["S", "M", "L", "XL"],
         "color": "black/white"
+    },
+    "56668961": {
+        "g:title": "Loyalty long-line tee",
+        "sizes": ["S", "M", "L", "XL"],
+        "color": "black/white"
     }
 }
