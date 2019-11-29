@@ -63,5 +63,40 @@
         "g:title": "Loyalty long-line tee",
         "sizes": ["S", "M", "L", "XL"],
         "color": "black/white"
+    },
+    "59222087": {
+        "g:title": "Logo Dad Cap",
+        "sizes": ["one size"],
+        "color": "tan/white"
+    },
+    "59217536": {
+        "g:title": "Logo Dad Cap",
+        "sizes": ["one size"],
+        "color": "black/white"
+    },
+    "59217668": {
+        "g:title": "Trauma Survivor long sleeve - white",
+        "sizes": ["S", "M", "L", "XL"],
+        "color": "white/black"
+    },
+    "59217629": {
+        "g:title": "Trauma Survivor zip hoodie - black",
+        "sizes": ["S", "M", "L", "XL"],
+        "color": "black/white"
+    },
+    "59216954": {
+        "g:title": "Celebrate Your Identity - black & gray baseball tee",
+        "sizes": ["S", "M", "L", "XL"],
+        "color": "black/gray/white"
+    },
+    "59216543": {
+        "g:title": "Celebrate Your Identity - black triblend tee",
+        "sizes": ["S", "M", "L", "XL"],
+        "color": "black/white"
+    },
+    "59216462": {
+        "g:title": "Celebrate Your Identity - white triblend tee",
+        "sizes": ["S", "M", "L", "XL"],
+        "color": "white/black"
     }
 }
